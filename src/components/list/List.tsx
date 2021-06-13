@@ -4,11 +4,24 @@ import {
   ListItem,
   Checkbox,
   List as ListComponent,
+  withStyles,
+  CheckboxProps,
 } from "@material-ui/core";
 import React from "react";
 import { Task } from "../../models/task";
 import styles from "./list.module.scss";
 import clsx from "clsx";
+import { green } from "@material-ui/core/colors";
+
+const SuccessCheckbox = withStyles({
+  root: {
+    color: green[400],
+    "&$checked": {
+      color: green[600],
+    },
+  },
+  checked: {},
+})((props: CheckboxProps) => <Checkbox color="default" {...props} />);
 
 interface Props {
   elements: Task[];
@@ -28,7 +41,7 @@ const List: React.FC<Props> = ({ elements }) => {
               })}
             />
             <ListItemSecondaryAction>
-              <Checkbox checked={completed} />
+              <SuccessCheckbox checked={completed} />
             </ListItemSecondaryAction>
           </ListItem>
         );
