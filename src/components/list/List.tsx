@@ -33,7 +33,7 @@ const List: React.FC<Props> = ({ elements }) => {
       {elements.map((v, _) => {
         const { id, description, completed } = v;
         return (
-          <ListItem key={id}>
+          <ListItem key={id} data-qa="list-item">
             <ListItemText
               primary={description}
               className={clsx(styles["list__description"], {

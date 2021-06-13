@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Paper from "@material-ui/core/Paper";
 import styles from "./toDoList.module.scss";
 import { Divider, Typography } from "@material-ui/core";
@@ -10,7 +10,7 @@ import { Api } from "./../../api/api";
 const service = new Api(Config.apiUrl);
 
 const ToDoList: React.FC = () => {
-  const [taskList, setTaskList] = useState<Task[]>([]);
+  const [taskList, setTaskList] = React.useState<Task[]>([]);
 
   useEffect(() => {
     service
@@ -27,9 +27,15 @@ const ToDoList: React.FC = () => {
         To-Do List
       </Typography>
       <div className={styles["to-do-list__list-container"]}>
-        <List elements={taskList.filter((t) => !t.completed)} />
+        <List
+          elements={taskList.filter((t) => !t.completed)}
+          data-qa="pending-task-list"
+        />
         <Divider />
-        <List elements={taskList.filter((t) => t.completed)} />
+        <List
+          elements={taskList.filter((t) => t.completed)}
+          data-qa="completed-task-list"
+        />
       </div>
     </Paper>
   );
