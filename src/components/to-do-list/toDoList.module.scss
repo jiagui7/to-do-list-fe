@@ -1,5 +1,12 @@
 .to-do-list {
-  width: 300px;
-  min-height: 80%;
-  padding: 10%;
+  padding: 40px;
+
+  &__title {
+    margin-bottom: 20px !important;
+  }
+
+  &__list-container {
+    overflow-y: auto;
+    max-height: 50vh;
+  }
 }

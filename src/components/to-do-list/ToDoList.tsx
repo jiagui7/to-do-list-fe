@@ -23,10 +23,14 @@ const ToDoList: React.FC = () => {
 
   return (
     <Paper elevation={3} className={styles["to-do-list"]}>
-      <Typography variant="h2">To-Do List</Typography>
-      <List elements={taskList.filter((t) => !t.completed)} />
-      <Divider />
-      <List elements={taskList.filter((t) => t.completed)} />
+      <Typography variant="h2" className={styles["to-do-list__title"]}>
+        To-Do List
+      </Typography>
+      <div className={styles["to-do-list__list-container"]}>
+        <List elements={taskList.filter((t) => !t.completed)} />
+        <Divider />
+        <List elements={taskList.filter((t) => t.completed)} />
+      </div>
     </Paper>
   );
 };
