@@ -11,13 +11,12 @@ import React from "react";
 import { Task } from "../../models/task";
 import styles from "./list.module.scss";
 import clsx from "clsx";
-import { green } from "@material-ui/core/colors";
 
 const SuccessCheckbox = withStyles({
   root: {
-    color: green[400],
+    color: "#1769aa",
     "&$checked": {
-      color: green[600],
+      color: "#2196f3",
     },
   },
   checked: {},
@@ -25,9 +24,10 @@ const SuccessCheckbox = withStyles({
 
 interface Props {
   elements: Task[];
+  onChange: (id: number, completed: boolean) => void;
 }
 
-const List: React.FC<Props> = ({ elements }) => {
+const List: React.FC<Props> = ({ elements, onChange }) => {
   return (
     <ListComponent>
       {elements.map((v, _) => {
@@ -41,7 +41,10 @@ const List: React.FC<Props> = ({ elements }) => {
               })}
             />
             <ListItemSecondaryAction>
-              <SuccessCheckbox checked={completed} />
+              <SuccessCheckbox
+                checked={Boolean(completed)}
+                onChange={(e) => onChange(id, e.target.checked)}
+              />
             </ListItemSecondaryAction>
           </ListItem>
         );

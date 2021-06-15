@@ -1,8 +1,15 @@
+@use "./../../utils/variables" as v;
+
 .to-do-list {
-  padding: 40px;
+  height: 100%;
+  padding: 30px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%),
+    0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
+  border-radius: 2px;
+  background-color: #ffffff;
 
   &__title {
     margin-bottom: 20px !important;
@@ -10,11 +17,47 @@
 
   &__input-form {
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__add-button {
+    color: v.$color-primary--main;
+  }
+
+  &__check-icon {
+    color: v.$color-primary--dark;
+
+    &--completed {
+      color: v.$color-primary--main !important;
+    }
   }
 
   &__list-container {
     overflow-y: auto;
-    max-height: 50vh;
+    max-height: 30vh;
     width: 100%;
+    margin-bottom: 20px;
+
+    @media only screen and (min-width: v.$mq-md) {
+      max-height: 50vh;
+    }
+  }
+
+  &__progress {
+    width: 80%;
+    margin-right: 10px;
+  }
+
+  &__progress-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 80%;
+    margin-bottom: 20px;
+  }
+
+  @media only screen and (min-width: v.$mq-md) {
+    padding: 30px 40px;
   }
 }

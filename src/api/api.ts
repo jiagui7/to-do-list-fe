@@ -23,4 +23,11 @@ export class Api {
       data: { description },
     });
   };
+
+  patch = async (id: number, completed: boolean): Promise<boolean> => {
+    return axios.patch(this.baseURL + "/task/" + id, {
+      headers: { "Content-Type": "application/json" },
+      data: { completed },
+    });
+  };
 }
