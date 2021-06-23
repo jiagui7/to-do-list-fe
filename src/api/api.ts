@@ -12,22 +12,16 @@ export class Api {
   }
 
   getAll = async (): Promise<Task[]> => {
-    return axios.get(this.baseURL + "/task").then((res) => {
+    return axios.get(this.baseURL + "/tasks").then((res) => {
       return res.data;
     });
   };
 
   add = async (description: string): Promise<boolean> => {
-    return axios.post(this.baseURL + "/task", {
-      headers: { "Content-Type": "application/json" },
-      data: { description },
-    });
+    return axios.post(this.baseURL + "/tasks", {description});
   };
 
   patch = async (id: number, completed: boolean): Promise<boolean> => {
-    return axios.patch(this.baseURL + "/task/" + id, {
-      headers: { "Content-Type": "application/json" },
-      data: { completed },
-    });
+    return axios.patch(this.baseURL + "/tasks/" + id, {completed});
   };
 }
